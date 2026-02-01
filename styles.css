@@ -1,0 +1,236 @@
+/* ========== Root & Reset ========== */
+
+:root {
+    --bg: #0b0b0b;
+    --text: #ededed;
+    --muted: #8a8a8a;
+    --border: #222;
+    --edu: #4ea1ff;
+    --work: #ff5c5c;
+    --project: #f5c451;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 680px;
+    padding: 90px 28px;
+}
+
+/* ========== Header & Sections ========== */
+
+.header {
+    margin-bottom: 80px;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.section {
+    margin-bottom: 100px;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+/* ========== Timeline Nav ========== */
+
+.timeline-nav {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+    .timeline-nav button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 0;
+        position: relative;
+    }
+
+        .timeline-nav button:hover,
+        .timeline-nav button.active {
+            color: var(--text);
+        }
+
+            .timeline-nav button.active::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                width: 100%;
+                height: 1px;
+                background: var(--text);
+            }
+
+/* ========== Timeline Core ========== */
+
+.timeline {
+    position: relative;
+    padding-left: 32px;
+    border-left: 1px solid var(--border);
+}
+
+/* Year anchors */
+.timeline-year {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin: 50px 0 20px;
+}
+
+    .timeline-year.muted {
+        opacity: 0.6;
+    }
+
+/* Timeline items */
+.timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+}
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -36px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--muted);
+    }
+
+    /* Type colors */
+    .timeline-item.edu::before {
+        background: var(--edu);
+    }
+
+    .timeline-item.work::before {
+        background: var(--work);
+    }
+
+    .timeline-item.project::before {
+        background: var(--project);
+    }
+
+    /* Item text */
+    .timeline-item h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+        font-size: 0.95rem;
+        color: var(--muted);
+    }
+
+    .timeline-item em {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+    }
+
+    /* Muted blocks (COVID) */
+    .timeline-item.muted {
+        opacity: 0.65;
+    }
+
+/* ========== Profiles ========== */
+
+.profiles {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+}
+
+    .profiles a {
+        color: var(--text);
+        font-size: 1.3rem;
+        transition: opacity 0.2s ease;
+    }
+
+        .profiles a:hover {
+            opacity: 0.5;
+        }
+
+.zotero-icon {
+    filter: grayscale(100%) invert(1);
+    opacity: 0.85;
+}
+
+/* ========== Certifications ========== */
+
+.cert {
+    margin-bottom: 36px;
+}
+
+    .cert h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .cert p {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 10px;
+    }
+
+.verify {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 2px;
+}
+
+/* ========== Footer ========== */
+
+.footer {
+    margin-top: 120px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+/* ========== Responsive ========== */
+
+@media (max-width: 600px) {
+    .container {
+        padding: 60px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
