@@ -1,0 +1,456 @@
+/* ==========================================
+   STYLESHEET FOR INDEX.HTML
+   
+   PURPOSE: Styles the landing page featuring:
+   - Hacker/terminal aesthetic with glowing text
+   - Hero name and navigation links
+   - Log stream display area
+   - Animation overlays and effects
+   - CRT scanline effect for retro feel
+   
+   Uses CSS variables for color management,
+   clamped font sizes for responsive design,
+   and animations for smooth transitions.
+   
+   ========================================== */
+
+/* --- ROOT VARIABLES (Theme Colors) ---
+   Change these values to quickly update entire site's color scheme
+*/
+:root {
+    --bg-color: #050505;
+    /* Near-black background */
+    --term-green: #0f0;
+    /* Terminal green - coding state */
+    --term-cyan: #0ff;
+    /* Cyan - gaming state */
+    --term-amber: #ffb000;
+    /* Amber/gold - writing state */
+    --font-main: 'Courier New', Courier, monospace;
+    /* Monospace terminal font */
+}
+
+/* --- RESET: Remove default browser margins/padding ---
+   box-sizing ensures padding/border don't expand element size
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === BODY: Container for entire page ===
+   
+   STYLING:
+   - Dark background with no scrollbars (hidden overflow)
+   - Fills entire viewport (100vh/100vw)
+   - Positioned relative for positioning child elements
+   - Monospace font for terminal feel
+   - Terminal green text by default
+*/
+body {
+    background-color: var(--bg-color);
+    color: var(--term-green);
+    font-family: var(--font-main);
+    overflow: hidden;
+    /* Hide scrollbars - content won't scroll */
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    position: relative;
+    /* Position context for children */
+}
+
+/* --- CRT SCANLINE EFFECT (Retro monitor aesthetic) ---
+   
+   FUNCTIONALITY: Creates horizontal and vertical lines overlaying page
+   to simulate old CRT/arcade monitor scanlines. Uses two gradients:
+   
+   1. Horizontal: Slight transparency + slight blur at 3px intervals
+   2. Vertical: RGB color shift (red, green, blue bleeding)
+   
+   PERFORMANCE NOTE: This ::after pseudo-element is rendered on every
+   frame. Consider removing or optimizing if performance is an issue.
+   Alternative: Use canvas or background-image with SVG instead.
+*/
+body::after {
+    content: " ";
+    /* Required to display pseudo-element */
+    display: block;
+    position: absolute;
+    /* Layer on top of page */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* Horizontal scanlines: dark lines every 3px */
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+        /* Vertical RGB shift for color aberration effect */
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 100;
+    /* Layer above all content */
+    background-size: 100% 3px, 3px 100%;
+    /* Repeat pattern every 3px */
+    pointer-events: none;
+    /* Don't intercept mouse clicks */
+}
+
+/* === UI LAYER: Hero name and nav links ===
+   
+   LAYOUT:
+   - Positioned absolutely at top of page
+   - Full width for vertical centering
+   - Centered text alignment
+   - z-index: 50 (above canvas, below scanlines)
+*/
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 6vh;
+    /* Space from top */
+    text-align: center;
+    z-index: 50;
+    /* Above canvas animation */
+}
+
+/* --- HERO NAME: Main title ---
+   
+   RESPONSIVE SIZING:
+   - Min: 1.2rem (phones)
+   - Preferred: 3vw (scales with viewport)
+   - Max: 2rem (large screens)
+   Uses CSS clamp() for fluid scaling without media queries.
+   
+   STYLING:
+   - Large letter spacing for tech aesthetic
+   - Light grey color (not pure green, for contrast)
+   - Green glow text shadow
+   - Uppercase for impact
+*/
+h1.hero-name {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    /* Responsive sizing */
+    letter-spacing: 3px;
+    /* Spread letters for tech feel */
+    color: #e0e0e0;
+    /* Light grey (slightly warmer than white) */
+    text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.3);
+    /* Green glow */
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    /* Shrink-wrap content */
+    text-transform: uppercase;
+    /* All caps for impact */
+}
+
+/* --- NAVIGATION LINKS: Flexbox container ---
+   
+   LAYOUT:
+   - Flexbox with centered content
+   - Gap between items (3rem = ~48px)
+   - pointer-events: auto allows clicking (body has hidden overflow)
+*/
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    /* Space between links */
+    pointer-events: auto;
+    /* Ensure links are clickable */
+}
+
+/* --- CYBER LINK STYLING: Navigation links ---
+   
+   INTERACTIVE ELEMENTS:
+   - Normal: semi-transparent white with bottom border
+   - Hover: full white text + bright green glow
+   
+   RESPONSIVE SIZING:
+   - Min: 0.9rem
+   - Preferred: 1.5vw
+   - Max: 1rem
+   
+   ANIMATION:
+   - 0.3s ease transition on ALL properties
+   - Allows smooth color/glow changes
+*/
+.cyber-link {
+    color: rgba(255, 255, 255, 0.7);
+    /* Slightly transparent white */
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    text-decoration: none;
+    /* No underline by default */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    /* Subtle green underline */
+    transition: all 0.3s ease;
+    /* Smooth animation on all changes */
+    z-index: 101;
+    /* Above UI layer */
+}
+
+/* --- CYBER LINK HOVER STATE ---
+   
+   INTERACTION FEEDBACK:
+   - Text becomes full white (100% opacity)
+   - Underline becomes bright green
+   - Green text-shadow creates glowing effect
+   
+   This strong visual feedback helps indicate clickability.
+*/
+.cyber-link:hover {
+    color: #fff;
+    /* Full white */
+    border-bottom: 1px solid var(--term-green);
+    /* Bright green underline */
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+    /* Green glow effect */
+}
+
+/* --- CYBER LINK FOCUS STATE ---
+   
+   KEYBOARD ACCESSIBILITY:
+   - Shows visible outline when tabbed to
+   - Essential for keyboard navigation users
+   - Matches hover styling for consistency
+*/
+.cyber-link:focus-visible {
+    outline: 2px solid var(--term-green);
+    outline-offset: 4px;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+/* === LOG STREAM: Terminal display area ===
+   
+   POSITIONING:
+   - Absolute center of page (transform needed for true centering)
+   - 90% width (responsive on mobile)
+   - Max 600px width (prevents being too wide on large screens)
+   - 35% height of viewport
+   - z-index: 10 (above canvas)
+   
+   LAYOUT:
+   - Flexbox with column-reverse = newest logs appear on top
+   - overflow: hidden prevents scrollbars
+*/
+#log-stream {
+    position: absolute;
+    top: 15%;
+    /* Start 15% from top (was 25%) */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center horizontally */
+    width: 90%;
+    max-width: 700px;
+    /* Wider (was 600px) to fit more logs */
+    height: 50%;
+    /* Taller (was 35%) to show 4-5 logs at once */
+    overflow: hidden;
+    /* Cut off logs that go beyond bounds */
+    z-index: 10;
+    display: flex;
+    flex-direction: column-reverse;
+    /* Newest logs on top */
+    align-items: center;
+}
+
+/* --- LOG ENTRY: Individual log lines ---
+   
+   RESPONSIVE SIZING:
+   - Font scales from 0.8rem (phone) to 1rem (desktop)
+   
+   ANIMATION:
+   - Opacity: 0 (invisible start)
+   - Plays terminalFastFade animation for 2s
+   - forwards: keeps final state (opacity: 0, moved up)
+   
+   This creates the effect of logs fading in, staying visible,
+   then fading out as they move up the screen.
+*/
+.log-entry {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    margin-bottom: 4px;
+    opacity: 0;
+    /* Start invisible */
+    animation: terminalFastFade 1.2s ease-out forwards;
+    /* Faster animation (was 2s) */
+    text-align: center;
+    white-space: nowrap;
+    /* Prevent wrapping (logs stay on one line) */
+}
+
+/* --- LOG COLORS: Styles per log type ---
+   
+   Each log type gets a unique color:
+   - .log-code: Bright green (coding activity)
+   - .log-game: Bright cyan (gaming activity)
+   - .log-write: Warm amber (writing activity)
+   - .log-warn: Red (warnings)
+   - .log-sys: Dim grey (system messages)
+   
+   Matches the avatar's glow colors for visual correlation.
+*/
+
+.log-code {
+    color: #88ff88;
+    /* Bright green */
+}
+
+.log-game {
+    color: #88ffff;
+    /* Bright cyan */
+}
+
+.log-write {
+    color: #ffcc66;
+    /* Warm amber/gold */
+}
+
+.log-warn {
+    color: #ff3333;
+    /* Bright red */
+}
+
+.log-sys {
+    color: #888;
+    /* Dim grey */
+    font-style: italic;
+    /* Italic for system messages */
+}
+
+/* === FOOTER: Status text at bottom ===
+   
+   POSITIONING:
+   - Fixed at bottom of page (10px from bottom)
+   - Full width, centered text
+   - Very subtle (low opacity for non-intrusive feel)
+   - pointer-events: none prevents blocking interaction
+*/
+#footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    /* Very faint white */
+    font-size: clamp(0.5rem, 2.5vw, 0.7rem);
+    padding: 0 10px;
+    z-index: 50;
+    pointer-events: none;
+    /* Doesn't block interaction */
+}
+
+/* === CANVAS: Animation layer ===
+   
+   RENDERING CONTEXT:
+   - Block display (removes inline spacing)
+   - Absolute positioned filling entire viewport
+   - z-index: 1 (behind UI layers, above background)
+   - 100% width/height fills entire viewport
+   
+   This is where the animated avatar is drawn.
+*/
+#hacker-den {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Behind UI, above background */
+}
+
+/* ========== ANIMATION: Terminal Fade ========== 
+   
+   KEYFRAMES: terminalFastFade
+   
+   PURPOSE: Animate log entries appearing and disappearing
+   
+   TIMELINE:
+   - 0%: Invisible, 10px below final position
+   - 10%: Fully visible, at final position (FAST IN)
+   - 70%: Fully visible, stays at position (DWELL)
+   - 100%: Invisible, 15px above original position (FADE OUT UP)
+   
+   This creates the "terminal log" effect where logs appear quickly,
+   stay for a bit, then fade away upward.
+*/
+@keyframes terminalFastFade {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+        /* Start below */
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+        /* Move to final position quickly */
+    }
+
+    70% {
+        opacity: 1;
+        /* Stay visible for most duration */
+    }
+
+    100% {
+        opacity: 0;
+        /* Fade out completely */
+        transform: translateY(-15px);
+        /* Move up as fading */
+    }
+}
+
+/* ========== ACCESSIBILITY: Reduced Motion Support ========== 
+   For users who prefer reduced motion (accessibility setting)
+   Disables animations to prevent motion sickness
+*/
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0s !important;
+        transition-duration: 0s !important;
+    }
+
+    body::after {
+        animation: none !important;
+    }
+}
+
+/* ========== RESPONSIVE DESIGN: Mobile Optimizations ========== 
+   Adjustments for small screen sizes
+*/
+@media (max-width: 640px) {
+
+    /**
+     * MOBILE: Navigation links stack vertically
+     * Prevents awkward wrapping on narrow screens
+     */
+    .nav-links {
+        gap: 1rem;
+        /* Reduce gap on mobile */
+        flex-direction: column;
+        /* Stack links vertically */
+    }
+
+    /**
+     * MOBILE: Smaller hero name on mobile
+     * Prevents text overflow
+     */
+    h1.hero-name {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+
+    /**
+     * MOBILE: Larger log text for readability
+     * Logs are easier to read on mobile with bigger font
+     */
+    .log-entry {
+        font-size: clamp(0.9rem, 3vw, 1.2rem);
+    }
+}

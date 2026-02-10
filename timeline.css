@@ -1,0 +1,428 @@
+/* ==========================================
+   TIMELINE PAGE STYLESHEET
+   
+   PURPOSE: Styles the timeline/portfolio page displaying education,
+   work history, and projects organized chronologically.
+   
+   DESIGN SYSTEM:
+   - Clean, minimal aesthetic (not cyber-themed like index)
+   - Vertical timeline with left-side colored dots
+   - Filter buttons to show/hide categories
+   - Color-coded entries for visual distinction
+   
+   RESPONSIVE: Mobile-friendly with breakpoint at 600px
+   
+   ========================================== */
+
+/* ========== ROOT & RESET ========== */
+
+/**
+ * CSS CUSTOM PROPERTIES (Variables)
+ * Define color tokens for consistent theming
+ * Makes it easy to update colors globally
+ */
+:root {
+    --bg: #0b0b0b;
+    /* Very dark background */
+    --text: #ededed;
+    /* Off-white text */
+    --muted: #8a8a8a;
+    /* Muted/secondary text */
+    --border: #222;
+    /* Subtle divider color */
+    --edu: #4ea1ff;
+    /* Blue for education */
+    --work: #ff5c5c;
+    /* Red for work */
+    --project: #f5c451;
+    /* Gold for projects */
+}
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== BODY: Base typography and layout ===== */
+
+body {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    /* Comfortable line spacing */
+    display: flex;
+    /* Flexbox for centering */
+    justify-content: center;
+    /* Center horizontally */
+}
+
+/* Container constrains max width and adds padding */
+.container {
+    width: 100%;
+    max-width: 680px;
+    /* Optimal reading width */
+    padding: 90px 28px;
+    /* Generous padding top/bottom, moderate sides */
+}
+
+/* ========== HEADER & SECTIONS ========== */
+
+/**
+ * HEADER: Page title and navigation back link
+ * Positioned at top of timeline section
+ */
+.header {
+    margin-bottom: 80px;
+    /* Large gap before timeline */
+}
+
+h1 {
+    font-size: 1.8rem;
+    /* Scaled down from 2.4rem */
+    font-weight: 800;
+    /* Extra bold */
+    letter-spacing: -0.04em;
+    /* Tight spacing for compact feel */
+}
+
+/**
+ * SECTION: Grouping for "Timeline" section
+ * Can be reused for other sections if expanded
+ */
+.section {
+    margin-bottom: 100px;
+    /* Large gap between sections */
+}
+
+/**
+ * SECTION LABEL: "TIMELINE" text above the section
+ * Small caps style for hierarchy
+ */
+.section-label {
+    font-size: 0.75rem;
+    /* Very small */
+    letter-spacing: 0.2em;
+    /* Spread out for emphasis */
+    text-transform: uppercase;
+    /* All caps */
+    color: var(--muted);
+    /* Subtle color */
+    margin-bottom: 30px;
+}
+
+/* ========== TIMELINE NAV (Filter Buttons) ========== */
+
+/**
+ * LAYOUT: Flexbox for horizontal button arrangement
+ * Gap provides spacing between buttons
+ */
+.timeline-nav {
+    display: flex;
+    gap: 22px;
+    /* Space between buttons */
+    margin-bottom: 40px;
+    /* Gap before timeline */
+}
+
+/**
+ * BUTTON STYLING: Custom-styled filter buttons
+ * 
+ * DEFAULTS:
+ * - No background or border (minimal style)
+ * - Small, uppercase text
+ * - Muted color (subdued)
+ * - Cursor: pointer for interactivity feedback
+ * - Relative positioning for ::after pseudo-element
+ */
+.timeline-nav button {
+    background: none;
+    /* No button background */
+    border: none;
+    /* No button border */
+    cursor: pointer;
+    /* Show clickability */
+    font-size: 0.75rem;
+    /* Small text */
+    letter-spacing: 0.15em;
+    /* Spread letters */
+    text-transform: uppercase;
+    /* All caps */
+    color: var(--muted);
+    /* Subtle grey */
+    padding: 0;
+    /* No padding */
+    position: relative;
+    /* For ::after positioning */
+}
+
+/**
+ * BUTTON HOVER & ACTIVE: Visual feedback
+ * - Hover: Brighten text
+ * - Active: Brighten text AND add underline
+ * 
+ * The ::after pseudo-element creates the underline
+ * with an absolute position below the text
+ */
+.timeline-nav button:hover,
+.timeline-nav button.active {
+    color: var(--text);
+    /* Full white/light grey */
+}
+
+/**
+ * ACTIVE BUTTON INDICATOR: Underline
+ * Shows which filter is currently active
+ */
+.timeline-nav button.active::after {
+    content: "";
+    /* Pseudo-element required for display */
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    /* Position below text */
+    width: 100%;
+    height: 1px;
+    /* Thin line */
+    background: var(--text);
+    /* White underline */
+}
+
+/**
+ * BUTTON FOCUS STATE: Keyboard accessibility
+ * Shows visible outline when tabbed to
+ * Essential for keyboard navigation users
+ */
+.timeline-nav button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+}
+
+/* ========== TIMELINE CORE ========== */
+
+/**
+ * TIMELINE CONTAINER: Vertical line with items
+ * Left border creates the vertical timeline line
+ * Padding-left provides space for items
+ */
+.timeline {
+    position: relative;
+    padding-left: 32px;
+    /* Space for dots on left */
+    border-left: 1px solid var(--border);
+    /* Vertical timeline line */
+}
+
+/* --- YEAR HEADERS: "2026", "2025", etc --- */
+
+.timeline-year {
+    font-size: 0.8rem;
+    /* Small, subtle */
+    font-weight: 700;
+    /* Bold for emphasis */
+    color: var(--muted);
+    /* Subdued color */
+    margin: 50px 0 20px;
+    /* Gap above and below */
+}
+
+.timeline-year.muted {
+    opacity: 0.6;
+    /* Very faint for less important years */
+}
+
+/* --- TIMELINE ITEMS: Individual entries (education, jobs, projects) --- */
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+    /* Gap between items */
+}
+
+/**
+ * TIMELINE DOT: Colored circle on left side
+ * Created via ::before pseudo-element
+ * - Position: Absolute to left of content
+ * - Color: Changes based on item type (edu/work/project)
+ */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -36px;
+    /* Offset to left */
+    top: 6px;
+    /* Align with first line of text */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* Make it a circle */
+    background: var(--muted);
+    /* Default muted color */
+}
+
+/**
+ * TYPE-SPECIFIC DOT COLORS
+ * Each category gets its own color for visual distinction
+ */
+.timeline-item.edu::before {
+    background: var(--edu);
+    /* Blue for education */
+}
+
+.timeline-item.work::before {
+    background: var(--work);
+    /* Red for work */
+}
+
+.timeline-item.project::before {
+    background: var(--project);
+    /* Gold for projects */
+}
+
+/* --- ITEM TEXT CONTENT --- */
+
+/**
+ * TITLE: Job title, degree name, project name
+ * Bold for emphasis, linked (can have hover effects)
+ */
+.timeline-item h3 {
+    font-size: 0.92rem;
+    /* Scaled down from 1.05rem */
+    font-weight: 700;
+    /* Bold */
+    margin-bottom: 4px;
+    /* Small gap to description */
+}
+
+/* Links in title preserve color, reduce opacity on hover */
+.timeline-item h3 a {
+    color: inherit;
+    text-decoration: none;
+    /* No underline */
+}
+
+.timeline-item h3 a:hover {
+    opacity: 0.75;
+    /* Slightly transparent on hover */
+}
+
+/**
+ * DESCRIPTION TEXT: Paragraph content
+ * Muted color for secondary importance
+ */
+.timeline-item p {
+    font-size: 0.85rem;
+    /* Scaled down from 0.95rem */
+    color: var(--muted);
+    /* Subdued grey */
+}
+
+/**
+ * EMPHASIS/METADATA: Company name, degree level
+ * Very small, muted, always italic
+ */
+.timeline-item em {
+    display: block;
+    /* Take up full width */
+    font-size: 0.75rem;
+    /* Very small */
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+/**
+ * MUTED ITEMS: For less important entries (e.g., COVID gap)
+ * Reduces prominence via opacity
+ */
+.timeline-item.muted {
+    opacity: 0.65;
+    /* Fade out */
+}
+
+/* ========== PROFILES / SOCIAL LINKS ========== */
+
+/**
+ * PROFILES SECTION: Social media links
+ * Uses flexbox for horizontal arrangement
+ */
+.profiles {
+    display: flex;
+    gap: 26px;
+    /* Space between icons */
+    align-items: center;
+    /* Vertically center */
+}
+
+.profiles a {
+    color: var(--text);
+    /* Light text for icons */
+    font-size: 1.1rem;
+    /* Scaled down from 1.3rem */
+    transition: opacity 0.2s ease;
+    /* Smooth fade on hover */
+}
+
+.profiles a:hover {
+    opacity: 0.5;
+    /* Fade to half opacity */
+}
+
+/* ========== FOOTER ========== */
+
+/**
+ * FOOTER: Low-priority content area
+ * Top border separates from main content
+ * Text is very small and muted
+ */
+.footer {
+    margin-top: 120px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+/* ========== Responsive ========== */
+
+@media (max-width: 600px) {
+    .container {
+        padding: 60px 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        /* Scaled down from 2rem */
+    }
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--text);
+    /* Highlights white on hover */
+}
+
+.back-link i {
+    margin-right: 6px;
+    font-size: 0.8rem;
+}
+
+/* ========== ACCESSIBILITY: Reduced Motion Support ========== 
+   For users who prefer reduced motion (accessibility setting)
+   Disables transitions to prevent motion sickness
+*/
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0s !important;
+    }
+}
