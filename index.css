@@ -345,6 +345,19 @@ h1.hero-name {
     /* Doesn't block interaction */
 }
 
+    .footer-profiles a {
+        margin-left: 0.7em;
+        color: #065432;
+        font-size: 1.2em;
+        vertical-align: middle;
+        transition: color 0.2s;
+        pointer-events: auto;
+    }
+    
+    .footer-profiles a:hover {
+        color: #fff;
+    }
+
 /* === CANVAS: Animation layer ===
    
    RENDERING CONTEXT:
