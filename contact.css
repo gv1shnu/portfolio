@@ -165,7 +165,7 @@ p {
 .link {
     color: var(--term-green);               /* Green by default */
     text-decoration: none;
-    font-size: 2.5rem;                      /* Large icons */
+    font-size: 1.8rem;                      /* Large icons */
     transition: all 0.2s ease;              /* Smooth animation on all properties */
     display: inline-block;                  /* Allows transform/scale to work */
 }
