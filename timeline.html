@@ -5,6 +5,8 @@
     <!-- ========== META INFORMATION ========== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Professional timeline of Vishnu Gandarapu">
+
     <title>Timeline - Vishnu Gandarapu</title>
 
     <!-- ========== GOOGLE FONTS ========== -->
@@ -24,8 +26,8 @@
 
     <!-- ========== EXTERNAL LIBRARIES ========== -->
     <!-- Font Awesome icons for social media links and UI elements -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+ 
     <!-- ========== STYLESHEETS ========== -->
     <!-- Timeline page styles (clean, minimal design with vertical timeline) -->
     <link rel="stylesheet" href="timeline.css" />
@@ -40,8 +42,21 @@
         <!-- Page title and navigation back link -->
         <header class="header">
             <h1>Vishnu Gandarapu</h1>
-            <!-- Link to return to home page -->
-            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Home</a>
+            <!-- Navigation links: Home (left), Contact (right) -->
+            <div class="header-links">
+                <a href="index.html" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Home
+                </a>
+                <a href="contact.html" class="back-link right-link">
+                    Contact
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <a href="#profiles" class="down-pointer" title="Go to Profiles">
+                Profiles
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
         </header>
 
         <!-- ========== TIMELINE SECTION ========== -->
@@ -282,28 +297,74 @@
         </section>
 
         <!-- ========== PROFILES SECTION ========== -->
-        <!-- Social media and professional profile links -->
+        <!-- Social and professional profile links -->
         <!-- Grouped by type of platform -->
-        <section class="section">
+        <section class="section" id="profiles">
             <h2 class="section-label">Profiles</h2>
 
             <!-- Development & Tech Platforms -->
             <div class="profiles">
-                <a href="https://github.com/gv1shnu" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-                <a href="https://www.hackerrank.com/profile/ordinarianx" target="_blank" rel="noopener"><i
-                        class="fab fa-hackerrank"></i></a>
+                <a href="https://github.com/gv1shnu" target="_blank" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.hackerrank.com/profile/ordinarianx" target="_blank" rel="noopener">
+                    <i class="fab fa-hackerrank"></i>
+                </a>
+                <a href="https://dancingwithdeath.itch.io" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-itch-io"></i>
+                </a>
+                <a href="https://www.kaggle.com/chaotickaggler" target="_blank" rel="noopener">
+                    <i class="fab fa-kaggle"></i>
+                </a>
             </div>
 
-            <br /><br />
+            <br />
 
             <!-- Reading & Research Platforms -->
             <div class="profiles">
-                <a href="https://www.goodreads.com/ordinarianx" target="_blank" rel="noopener"><i
-                        class="fab fa-goodreads"></i></a>
-                <a href="https://www.zotero.com/gv1shnu" target="_blank" rel="noopener"><i
-                        class="fa-solid fa-z"></i></a>
+                <a href="https://www.goodreads.com/ordinarianx" target="_blank" rel="noopener">
+                    <i class="fab fa-goodreads"></i>
+                </a>
+                <a href="https://www.zotero.com/marginofterror" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-z"></i>
+                </a>
+                <a href="https://whisperbomb.medium.com" target="_blank">
+                    <i class="fa-brands fa-medium"></i>                
+                </a>
+            </div>
+
+            <br />
+
+             <!-- Art and Misc. Platforms -->
+            <div class="profiles">
+                <a href="https://gv1shnu.artstation.com/" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-artstation"></i>
+                </a>
+                <a href="https://tryhackme.com/profile/ordinarianx" target="_blank" rel="noopener">
+                    <i class="fa fa-cloud"></i>
+                </a> 
+            </div>
+            
+            <br />
+
+            <!-- hehe -->
+            <div class="profiles">
+                <a href="https://letterboxd.com/whisperbomb/" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-letterboxd"></i>
+                </a>
             </div>
         </section>
+
+        <div class="header-links">
+            <a href="index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                Home
+            </a>
+            <a href="contact.html" class="back-link right-link">
+                Contact
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
 
         <!-- ========== PAGE FOOTER ========== -->
         <footer class="footer">
@@ -314,10 +375,10 @@
 
     <!-- ========== SCRIPTS ========== -->
     <!-- Timeline filtering functionality -->
-    <script src="timeline.js"></script>
+    <script src="timeline.js" defer></script>
 
     <!-- Analytics: GoatCounter -->
-    <script data-goatcounter="https://vgin.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+    <script data-goatcounter="https://vgin.goatcounter.com/count" async src="//gc.zgo.at/count.js" defer>
     </script>
 </body>
 
