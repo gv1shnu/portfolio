@@ -37,7 +37,7 @@
 [WARN] Docker container crashing
 [WARN] Python indentation error
 [WARN] Lag detected...
-[WARN] GPU Temperature: 82°C
+[WARN] GPU Temperature: 82ï¿½C
 [WARN] Writer's Block: Active
 [WARN] Coffee Level: Critical
 [WRITE] Drafting: 'The Next Chapter'
@@ -46,4 +46,5 @@
 [WRITE] Word Count: 50,201
 [WRITE] Character Arc: Redemption
 [WRITE] Saving 'final_v2_REAL.txt'...
-[WRITE] Inspiration strikes!
+[WRITE] Inspiration strikes
+[WRITE] Show me the money!!
