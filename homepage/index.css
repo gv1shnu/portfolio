@@ -160,6 +160,7 @@ h1.hero-name {
     /* Space between links */
     pointer-events: auto;
     /* Ensure links are clickable */
+    margin-top: 1rem;
 }
 
 /* --- CYBER LINK STYLING: Navigation links ---
@@ -178,7 +179,7 @@ h1.hero-name {
    - Allows smooth color/glow changes
 */
 .cyber-link {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     /* Slightly transparent white */
     font-size: clamp(0.9rem, 1.5vw, 1rem);
     text-decoration: none;
@@ -240,18 +241,19 @@ h1.hero-name {
 */
 #log-stream {
     position: absolute;
-    top: 15%;
-    /* Start 15% from top (was 25%) */
+    top: 22%;
+    /* A bit higher so we can make the window taller */
     left: 50%;
     transform: translateX(-50%);
     /* Center horizontally */
     width: 90%;
     max-width: 700px;
     /* Wider (was 600px) to fit more logs */
-    height: 50%;
-    /* Taller (was 35%) to show 4-5 logs at once */
-    overflow: hidden;
-    /* Cut off logs that go beyond bounds */
+    bottom: 300px;
+    /* Use bottom instead of fixed height so window fills space down to above footer */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Allow scrolling so no log entry is hidden; still capped at 13 children in JS */
     z-index: 10;
     display: flex;
     flex-direction: column-reverse;
@@ -274,53 +276,15 @@ h1.hero-name {
 */
 .log-entry {
     font-size: clamp(0.8rem, 2vw, 1rem);
-    margin-bottom: 4px;
+    margin-bottom: 5px;
+    padding: 4px;
     opacity: 0;
     /* Start invisible */
-    animation: terminalFastFade 1.2s ease-out forwards;
-    /* Faster animation (was 2s) */
+    animation: terminalFastFade 4s ease-out forwards;
+    /* Even slower animation so logs stay visible longer */
     text-align: center;
     white-space: nowrap;
     /* Prevent wrapping (logs stay on one line) */
-}
-
-/* --- LOG COLORS: Styles per log type ---
-   
-   Each log type gets a unique color:
-   - .log-code: Bright green (coding activity)
-   - .log-game: Bright cyan (gaming activity)
-   - .log-write: Warm amber (writing activity)
-   - .log-warn: Red (warnings)
-   - .log-sys: Dim grey (system messages)
-   
-   Matches the avatar's glow colors for visual correlation.
-*/
-
-.log-code {
-    color: #88ff88;
-    /* Bright green */
-}
-
-.log-game {
-    color: #88ffff;
-    /* Bright cyan */
-}
-
-.log-write {
-    color: #ffcc66;
-    /* Warm amber/gold */
-}
-
-.log-warn {
-    color: #ff3333;
-    /* Bright red */
-}
-
-.log-sys {
-    color: #888;
-    /* Dim grey */
-    font-style: italic;
-    /* Italic for system messages */
 }
 
 /* === FOOTER: Status text at bottom ===

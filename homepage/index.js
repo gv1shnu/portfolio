@@ -20,7 +20,7 @@ const logContainer = document.getElementById('log-stream'); // Reference to log 
  * Loads logz.txt and parses each line with format: [TYPE] message
  * Stores structured log objects for random display
  */
-fetch('logz.txt')
+fetch('./homepage/logz.txt')
     .then(response => response.text())
     // Parse text into array of log objects
     .then(text => {
@@ -66,15 +66,17 @@ function spawnLog() {
     const data = logs[Math.floor(Math.random() * logs.length)];
     const el = document.createElement('div');
 
-    // Apply styling classes based on log type
-    el.classList.add('log-entry', `log-${data.type}`);
+    el.classList.add('log-entry');
+
+    const colors = ['#88ff88', '#88ffff', '#ffcc66', '#ff3333', '#888']; // green, cyan, amber, red, grey
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    el.style.color = randomColor;
     el.innerHTML = `> ${data.text}`;
 
     // Add to top of log stream (prepend)
     logContainer.prepend(el);
 
-    // Keep only 4 logs visible - remove older ones (was 2, now shows more at once)
-    if (logContainer.children.length > 9) {
+    if (logContainer.children.length > 6) {
         logContainer.lastElementChild.remove();
     }
 
@@ -247,8 +249,8 @@ function drawAvatar(ctx, cx, cy, frameCount) {
     let elbowL = { x: cx - 25 * scale, y: cy - 35 * scale }; // Left elbow
     let elbowR = { x: cx + 25 * scale, y: cy - 35 * scale }; // Right elbow
 
-    // Animation speed multiplier based on frame count
-    const speed = frameCount * 0.15;
+    // Animation speed multiplier based on frame count (higher = more movement)
+    const speed = frameCount * 0.3;
 
     // --- BEHAVIOR LOGIC: State-specific animations ---
     // Each state modifies body position and limb movement
@@ -394,8 +396,8 @@ function animate() {
     if (timeSinceLastFrame >= frameInterval) {
         ctx.clearRect(0, 0, cssWidth, cssHeight); // Clear entire canvas (CSS coords, ctx.scale handles DPR)
 
-        // STATE MACHINE: Randomly cycle states every 4 seconds (unless dabbing)
-        if (!isDabbing && Date.now() - lastStateChange > 4000) {
+        // STATE MACHINE: Randomly cycle states every ~2 seconds (unless dabbing)
+        if (!isDabbing && Date.now() - lastStateChange > 2000) {
             // Pick a random state from the three main options
             state = ["coding", "gaming", "writing"][Math.floor(Math.random() * 3)];
             lastStateChange = Date.now(); // Update timer

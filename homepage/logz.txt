@@ -37,7 +37,6 @@
 [WARN] Docker container crashing
 [WARN] Python indentation error
 [WARN] Lag detected...
-[WARN] GPU Temperature: 82�C
 [WARN] Writer's Block: Active
 [WARN] Coffee Level: Critical
 [WRITE] Drafting: 'The Next Chapter'

@@ -13,8 +13,16 @@
 
     <!-- ========== STYLESHEETS ========== -->
     <!-- Main stylesheet for hacker/terminal aesthetic -->
-    <link rel="preload" href="logz.txt" as="fetch" crossorigin>
-    <link rel="stylesheet" href="index.css">
+    <link rel="preload" href="./homepage/logz.txt" as="fetch" crossorigin>
+    <link rel="stylesheet" href="./homepage/index.css">
+
+    <!-- ========== FAVICON & PWA ========== -->
+    <!-- Favicon files for different devices and browser tabs -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <!-- PWA manifest for installable web app -->
+    <link rel="manifest" href="./favicon/site.webmanifest">
 
     <!-- ========== EXTERNAL LIBRARIES ========== -->
     <!-- Font Awesome icons for social media links and UI elements -->
@@ -31,9 +39,8 @@
 
         <!-- Navigation links to subpages -->
         <div class="nav-links">
-            <a class="cyber-link" href="timeline.html">Visit Timeline</a>
-            <a class="cyber-link" href="contact.html">Contact Me</a>
-            <!-- <a class="cyber-link" href="#">View Gallery</a> -->
+            <a class="cyber-link" href="timeline/timeline.html">Visit Timeline</a>
+            <a class="cyber-link" href="contact/contact.html">Contact Me</a>
         </div>
     </div>
 
@@ -60,7 +67,7 @@
 
     <!-- ========== SCRIPTS ========== -->
     <!-- Main JavaScript for animation and log system -->
-    <script src="index.js" defer></script>
+    <script src="./homepage/index.js" defer></script>
 
     <!-- Analytics: GoatCounter (tracks page views) -->
     <script data-goatcounter="https://vgin.goatcounter.com/count" async src="//gc.zgo.at/count.js" defer>
