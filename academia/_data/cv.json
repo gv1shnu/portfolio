@@ -1,0 +1,165 @@
+{
+  "basics": {
+    "name": "Vishnu Gandarapu",
+    "email": "vishnugandarapu.dev@gmail.com",
+    "phone": "",
+    "website": "https://vishnugandarapu.in",
+    "summary": "Independent researcher learning and building human-centric, universe-exploring technology.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "India",
+      "countryCode": "IN",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "gv1shnu",
+        "url": "https://github.com/gv1shnu"
+      },
+      {
+        "network": "Kaggle",
+        "username": "chaotickaggler",
+        "url": "https://www.kaggle.com/chaotickaggler"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "EXL",
+      "position": "Assistant Manager — Developer",
+      "startDate": "2023",
+      "endDate": "2024",
+      "summary": "Worked on low-code enterprise systems."
+    },
+    {
+      "company": "IIIT Gwalior",
+      "position": "Teaching Assistant",
+      "startDate": "2023",
+      "endDate": "2023",
+      "summary": "Assisted with lab evaluations and student support."
+    },
+    {
+      "company": "Wattlecorp Cybersecurity Labs",
+      "position": "VAPT Intern",
+      "startDate": "2022",
+      "endDate": "2022",
+      "summary": "Conducted vulnerability assessments and authored penetration testing reports."
+    }
+  ],
+  "education": [
+    {
+      "institution": "BITS Pilani",
+      "area": "M.Sc. in Data Science & Artificial Intelligence",
+      "studyType": "Online Postgraduate",
+      "startDate": "2026",
+      "endDate": "",
+      "gpa": null,
+      "courses": []
+    },
+    {
+      "institution": "ABV-IIITM Gwalior",
+      "area": "M.Tech in Information Technology",
+      "studyType": "Integrated M.Tech",
+      "startDate": "2018",
+      "endDate": "2023",
+      "gpa": null,
+      "courses": []
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": [
+        "Python",
+        "JavaScript",
+        "C++",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Web",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "React",
+        "Node.js",
+        "FastAPI"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keywords": [
+        "Docker",
+        "Git",
+        "Linux",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "name": "Domains",
+      "keywords": [
+        "Cybersecurity",
+        "Machine Learning",
+        "Low-Code Systems",
+        "Game Dev"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "Telugu",
+      "fluency": "Native"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Wildlife Photography"
+    },
+    {
+      "name": "Badminton"
+    },
+    {
+      "name": "Fiction Writing"
+    },
+    {
+      "name": "Game Development"
+    }
+  ],
+  "references": [],
+  "publications": [],
+  "presentations": [],
+  "teaching": [],
+  "portfolio": [
+    {
+      "name": "Project BAY",
+      "category": "Web Application",
+      "date": "2026",
+      "url": "https://github.com/gv1shnu/project-bay",
+      "description": "Ethical betting platform centred around self-imposed growth, commitments, and accountability."
+    },
+    {
+      "name": "Nexus",
+      "category": "Metasearch Engine",
+      "date": "2025",
+      "url": "https://github.com/gv1shnu/nexus",
+      "description": "Metasearch engine aggregating results across multiple search backends."
+    },
+    {
+      "name": "Dino Hunt",
+      "category": "Game",
+      "date": "2024",
+      "url": "https://github.com/gv1shnu/dino-hunt",
+      "description": "Multiplayer shooter where players are randomly assigned as hunter or raptor."
+    }
+  ]
+}

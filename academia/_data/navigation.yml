@@ -1,0 +1,9 @@
+main:
+  - title: "← Portfolio"
+    url: /
+
+  - title: "About"
+    url: /
+
+  - title: "CV"
+    url: /cv/

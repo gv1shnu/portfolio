@@ -416,3 +416,12 @@ function animate() {
 
 // START ANIMATION LOOP
 animate();
+
+document.addEventListener('DOMContentLoaded', function () {
+    const academiaLink = document.querySelector('a.cyber-link[href="/academia/"]');
+    if (!academiaLink) return;
+    const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (isLocal && (location.port === '5500' || location.protocol === 'file:')) {
+        academiaLink.href = 'http://localhost:4000/academia/';
+    }
+});
