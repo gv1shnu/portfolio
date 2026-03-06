@@ -27,6 +27,9 @@
 </head>
 
 <body>
+    <!-- ========== MATRIX RAIN BACKGROUND ========== -->
+    <!-- Animated digital rain canvas rendered behind all content -->
+    <canvas id="matrix-bg" aria-hidden="true"></canvas>
 
     <!-- ========== CRT SCANLINE OVERLAY ========== -->
     <!-- Visual effect simulating old monitor scan lines -->
@@ -36,34 +39,38 @@
     <!-- ========== CONTACT CONTAINER ========== -->
     <!-- Main content box with contact information and social links -->
     <div class="contact-container">
-        <!-- Header with terminal-style title -->
-        <h2>>> Contact</h2>
+        <!-- Header with terminal-style title (typed out) -->
+        <h2 class="typed-line" data-type=">> Contact"></h2>
 
-        <!-- Contact introduction -->
-        <p>Vishnu Gandarapu</p>
-        <p>Status: Available for collaboration</p>
+        <!-- Contact introduction (typed out sequentially) -->
+        <p class="typed-line" data-type="Vishnu Gandarapu"></p>
+        <p class="typed-line" data-type="Status: Available for collaboration"></p>
 
         <br>
 
         <!-- ========== SOCIAL LINKS ROW ========== -->
-        <!-- LinkedIn and Email links with Font Awesome icons -->
-        <!-- These are external links that open in new tabs -->
-        <div class="social-row">
+        <!-- Revealed after typewriter sequence completes -->
+        <div class="social-row reveal-on-typed" style="opacity: 0;">
             <!-- LinkedIn Profile Link -->
-            <a class="link" href="https://linkedin.com/in/vishnu-gandarapu" target="_blank">
+            <a class="link glitch-hover" href="https://linkedin.com/in/vishnu-gandarapu" target="_blank">
                 <i class="fab fa-linkedin"></i>
             </a>
 
             <!-- Email Contact Link -->
-            <a class="link" href="mailto:vishnugandarapu.dev@gmail.com">
+            <a class="link glitch-hover" href="mailto:vishnugandarapu.dev@gmail.com">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
 
         <!-- ========== BACK NAVIGATION ========== -->
-        <!-- Link to return to home page -->
-        <a class="back-btn" href="../index.html">[ RETURN ]</a>
+        <a class="back-btn reveal-on-typed" href="../index.html" style="opacity: 0;">[ RETURN ]</a>
     </div>
+
+    <!-- Matrix rain animation -->
+    <script src="matrix-rain.js" defer></script>
+
+    <!-- Terminal typewriter + glitch effects -->
+    <script src="contact.js" defer></script>
 
     <!-- ========== ANALYTICS ========== -->
     <!-- GoatCounter tracking for page views -->

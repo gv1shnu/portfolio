@@ -20,10 +20,14 @@
  * Can be coordinated with index.css for consistency
  */
 :root {
-    --bg-color: #050505;        /* Near-black background */
-    --term-green: #0f0;         /* Terminal green - primary theme */
-    --term-dim: #004400;        /* Darker green for muted elements */
-    --font-main: 'Courier New', Courier, monospace;  /* Monospace font */
+    --bg-color: #050505;
+    /* Near-black background */
+    --term-green: #0f0;
+    /* Terminal green - primary theme */
+    --term-dim: #004400;
+    /* Darker green for muted elements */
+    --font-main: 'Courier New', Courier, monospace;
+    /* Monospace font */
 }
 
 /* Reset default browser styles */
@@ -33,17 +37,39 @@
     box-sizing: border-box;
 }
 
+/* ========== MATRIX RAIN CANVAS ========== */
+
+/**
+ * Full-viewport canvas for animated Matrix digital rain.
+ * Sits behind all content (z-index: 0).
+ */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+}
+
 /* ========== BODY: Base layout and styling ========== */
 
 body {
     background-color: var(--bg-color);
     color: var(--term-green);
     font-family: var(--font-main);
-    height: 100vh;              /* Fill viewport */
-    display: flex;              /* Flexbox for centering */
-    align-items: center;        /* Vertically center content */
-    justify-content: center;    /* Horizontally center content */
-    overflow: hidden;           /* No scrollbars */
+    height: 100vh;
+    /* Fill viewport */
+    display: flex;
+    /* Flexbox for centering */
+    align-items: center;
+    /* Vertically center content */
+    justify-content: center;
+    /* Horizontally center content */
+    overflow: hidden;
+    /* No scrollbars */
 }
 
 /* ========== CRT SCANLINE OVERLAY ========== */
@@ -59,16 +85,21 @@ body {
  * If performance issues arise, consider SVG or canvas alternative.
  */
 .scanlines {
-    position: fixed;            /* Cover entire viewport */
+    position: fixed;
+    /* Cover entire viewport */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     /* Horizontal scanlines */
-    background: rgba(0, 0, 0, 0.03);  /* Simplified */
-    background-size: 100% 3px, 3px 100%;  /* Repeat pattern every 3px */
-    pointer-events: none;       /* Don't intercept user clicks/interaction */
-    z-index: 10;                /* Above content but below interactive elements */
+    background: rgba(0, 0, 0, 0.03);
+    /* Simplified */
+    background-size: 100% 3px, 3px 100%;
+    /* Repeat pattern every 3px */
+    pointer-events: none;
+    /* Don't intercept user clicks/interaction */
+    z-index: 10;
+    /* Above content but below interactive elements */
 }
 
 /* ========== CONTACT CONTAINER ========== */
@@ -90,15 +121,24 @@ body {
  */
 .contact-container {
     position: relative;
-    z-index: 20;                /* Above scanlines */
-    width: 90%;                 /* Responsive width */
-    max-width: 500px;           /* Max width on large screens */
-    border: 1px solid var(--term-green);   /* Green border */
-    padding: 2.5rem;            /* Internal spacing */
-    background: rgba(0, 20, 0, 0.9);       /* Dark greenish overlay (90% opaque) */
-    backdrop-filter: blur(5px); /* Glass-morphism effect */
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.15);  /* Green glow */
-    text-align: center;         /* Center all content */
+    z-index: 20;
+    /* Above scanlines */
+    width: 90%;
+    /* Responsive width */
+    max-width: 500px;
+    /* Max width on large screens */
+    border: 1px solid var(--term-green);
+    /* Green border */
+    padding: 2.5rem;
+    /* Internal spacing */
+    background: rgba(0, 20, 0, 0.9);
+    /* Dark greenish overlay (90% opaque) */
+    backdrop-filter: blur(5px);
+    /* Glass-morphism effect */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.15);
+    /* Green glow */
+    text-align: center;
+    /* Center all content */
 }
 
 /* ========== HEADING ========== */
@@ -108,10 +148,12 @@ body {
  * Styled to look like terminal command prompt
  */
 h2 {
-    border-bottom: 1px solid var(--term-green);  /* Green underline */
+    border-bottom: 1px solid var(--term-green);
+    /* Green underline */
     padding-bottom: 15px;
     margin-bottom: 25px;
-    text-shadow: 0 0 5px var(--term-green);     /* Glow effect */
+    text-shadow: 0 0 5px var(--term-green);
+    /* Glow effect */
 }
 
 /* ========== PARAGRAPHS ========== */
@@ -125,9 +167,11 @@ h2 {
  */
 p {
     margin-bottom: 10px;
-    color: #ddd;                /* Light grey, warmer than pure white */
+    color: #ddd;
+    /* Light grey, warmer than pure white */
     font-size: 1.1rem;
-    text-align: left;           /* Left-aligned for readability */
+    text-align: left;
+    /* Left-aligned for readability */
 }
 
 /* ========== SOCIAL MEDIA ROW ========== */
@@ -143,9 +187,12 @@ p {
  */
 .social-row {
     display: flex;
-    justify-content: center;    /* Center icons horizontally */
-    gap: 30px;                  /* Space between icons */
-    margin: 30px 0;             /* Vertical spacing */
+    justify-content: center;
+    /* Center icons horizontally */
+    gap: 30px;
+    /* Space between icons */
+    margin: 30px 0;
+    /* Vertical spacing */
 }
 
 /* ========== SOCIAL LINKS ========== */
@@ -163,11 +210,15 @@ p {
  * - 0.2s ease for smooth animation
  */
 .link {
-    color: var(--term-green);               /* Green by default */
+    color: var(--term-green);
+    /* Green by default */
     text-decoration: none;
-    font-size: 1.8rem;                      /* Large icons */
-    transition: all 0.2s ease;              /* Smooth animation on all properties */
-    display: inline-block;                  /* Allows transform/scale to work */
+    font-size: 1.8rem;
+    /* Large icons */
+    transition: all 0.2s ease;
+    /* Smooth animation on all properties */
+    display: inline-block;
+    /* Allows transform/scale to work */
 }
 
 /**
@@ -177,9 +228,12 @@ p {
  * - Green glow (matches theme)
  */
 .link:hover {
-    color: #fff;                /* Full white */
-    transform: scale(1.1);      /* 10% larger */
-    text-shadow: 0 0 15px var(--term-green);  /* Glow effect */
+    color: #fff;
+    /* Full white */
+    transform: scale(1.1);
+    /* 10% larger */
+    text-shadow: 0 0 15px var(--term-green);
+    /* Glow effect */
 }
 
 /**
@@ -206,14 +260,19 @@ p {
  * - Hover state highlights in green
  */
 .back-btn {
-    display: block;             /* Full width */
+    display: block;
+    /* Full width */
     margin-top: 30px;
-    color: #666;                /* Muted grey */
+    color: #666;
+    /* Muted grey */
     text-decoration: none;
-    border-top: 1px solid #333; /* Subtle divider */
-    padding-top: 20px;          /* Space below divider */
+    border-top: 1px solid #333;
+    /* Subtle divider */
+    padding-top: 20px;
+    /* Space below divider */
     font-size: 0.9rem;
-    transition: color 0.3s;     /* Smooth color transition */
+    transition: color 0.3s;
+    /* Smooth color transition */
 }
 
 /**
@@ -222,8 +281,10 @@ p {
  * - Glow effect for consistency with other interactive elements
  */
 .back-btn:hover {
-    color: var(--term-green);   /* Bright green */
-    text-shadow: 0 0 5px var(--term-green);  /* Glow effect */
+    color: var(--term-green);
+    /* Bright green */
+    text-shadow: 0 0 5px var(--term-green);
+    /* Glow effect */
 }
 
 /**
@@ -236,12 +297,109 @@ p {
     outline-offset: 2px;
 }
 
-/* ========== ACCESSIBILITY: Reduced Motion Support ========== 
+/* ========== TYPEWRITER EFFECT ========== */
+
+/**
+ * TYPED LINES: Elements that get typed out character-by-character.
+ * Start empty; JS fills them. Min-height preserves layout space.
+ */
+.typed-line {
+    min-height: 1.3em;
+}
+
+h2.typed-line {
+    min-height: 1.5em;
+}
+
+/* ========== GLITCH HOVER EFFECT ========== */
+
+/**
+ * GLITCH ANIMATION: Brief distortion burst on hover.
+ * Applied via JS adding/removing .glitching class.
+ *
+ * Layers of effect:
+ * - Rapid skew + translate jitter
+ * - text-shadow offset creates "split" aberration
+ * - Very quick keyframes (50ms steps)
+ */
+@keyframes glitch-anim {
+    0% {
+        transform: translate(0) skew(0deg);
+        text-shadow: none;
+    }
+
+    10% {
+        transform: translate(-2px, 1px) skew(-1deg);
+        text-shadow: 2px 0 #f0f, -2px 0 #0ff;
+    }
+
+    20% {
+        transform: translate(2px, -1px) skew(1deg);
+        text-shadow: -2px 0 #f0f, 2px 0 #0ff;
+    }
+
+    30% {
+        transform: translate(-1px, 2px) skew(-0.5deg);
+        text-shadow: 1px 0 #0f0, -1px 0 #f00;
+    }
+
+    40% {
+        transform: translate(1px, -2px) skew(0.5deg);
+        text-shadow: -1px 0 #0f0, 1px 0 #f00;
+    }
+
+    50% {
+        transform: translate(-2px, -1px) skew(-1deg);
+        text-shadow: 2px 0 #f0f, -2px 0 #0ff;
+    }
+
+    60% {
+        transform: translate(2px, 1px) skew(0deg);
+        text-shadow: none;
+    }
+
+    70% {
+        transform: translate(0, 2px) skew(1deg);
+        text-shadow: -2px 0 #0ff, 2px 0 #f0f;
+    }
+
+    80% {
+        transform: translate(-1px, -1px) skew(-0.5deg);
+        text-shadow: 1px 0 #f00, -1px 0 #0f0;
+    }
+
+    90% {
+        transform: translate(1px, 0) skew(0.5deg);
+        text-shadow: -1px 0 #f0f, 1px 0 #0ff;
+    }
+
+    100% {
+        transform: translate(0) skew(0deg);
+        text-shadow: none;
+    }
+}
+
+/**
+ * GLITCHING STATE: Applied by JS on mouseenter, removed after 300ms.
+ * Uses the glitch-anim keyframes for a rapid distortion burst.
+ */
+.glitch-hover.glitching {
+    animation: glitch-anim 0.3s ease both;
+}
+
+/* Override the normal hover transition during glitch */
+.glitch-hover.glitching:hover {
+    color: #fff;
+    text-shadow: 0 0 15px var(--term-green);
+}
+
+/* ========== ACCESSIBILITY: Reduced Motion Support ==========
    For users who prefer reduced motion (accessibility setting)
-   Disables transitions to prevent motion sickness
+   Disables transitions and animations to prevent motion sickness
 */
 @media (prefers-reduced-motion: reduce) {
     * {
         transition-duration: 0s !important;
+        animation-duration: 0s !important;
     }
 }
