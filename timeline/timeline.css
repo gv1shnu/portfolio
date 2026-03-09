@@ -45,6 +45,23 @@
     box-sizing: border-box;
 }
 
+/* ========== SPACE BACKGROUND CANVAS ========== */
+
+/**
+ * Full-page canvas positioned behind all content.
+ * Uses position:fixed to stay in viewport, with z-index:-1.
+ */
+#space-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;     /* Click-through: doesn't block content */
+    display: block;
+}
+
 /* ========== BODY: Base typography and layout ===== */
 
 body {
@@ -66,6 +83,8 @@ body {
     /* Optimal reading width */
     padding: 90px 28px;
     /* Generous padding top/bottom, moderate sides */
+    position: relative;
+    z-index: 1;               /* Content sits above canvas */
 }
 
 /* ========== HEADER & SECTIONS ========== */

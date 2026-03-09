@@ -34,6 +34,10 @@
 </head>
 
 <body>
+    <!-- ========== SPACE BACKGROUND CANVAS ========== -->
+    <!-- Full-page animated starfield rendered behind all content -->
+    <canvas id="space-bg" aria-hidden="true"></canvas>
+
     <!-- ========== MAIN CONTAINER ========== -->
     <!-- Constrains content width for optimal readability -->
     <main class="container">
@@ -79,11 +83,18 @@
                 <!-- YEAR HEADER: 2026 -->
                 <div class="timeline-year">2026</div>
 
+                <!-- Career update -->
+                <div class="timeline-item work">
+                    <h3>Rishihood University</h3>
+                    <p><em>Assistant Professor, CS</em></p>
+                    <p>Teaching undergraduate courses and mentoring students in applied engineering.</p>
+                </div>
+
                 <!-- EDUCATION: BITS Pilani (Master's) -->
                 <div class="timeline-item edu">
                     <h3>BITS Pilani</h3>
                     <p><em>M.Sc. in Data Science & Artificial Intelligence</em></p>
-                    <p>Currently enrolled in online postgraduate coursework.</p>
+                    <p>Currently enrolled in online work-integrated postgraduate coursework.</p>
                 </div>
 
                 <!-- PROJECT: Project BAY -->
@@ -147,18 +158,12 @@
                 <div class="timeline-item work">
                     <h3>EXL</h3>
                     <p><em>Assistant Manager — Developer</em></p>
-                    <p>Continued development responsibilities within enterprise systems; tenure concluded in April.</p>
+                    <p>Joined the organization in 2023 and worked on low-code enterprise systems, continuing development
+                        responsibilities until April.</p>
                 </div>
 
                 <!-- YEAR HEADER: 2023 -->
                 <div class="timeline-year">2023</div>
-
-                <!-- WORK: EXL (Start of 2023) -->
-                <div class="timeline-item work">
-                    <h3>EXL</h3>
-                    <p><em>Assistant Manager — Developer</em></p>
-                    <p>Joined the organization and worked on low code systems.</p>
-                </div>
 
                 <!-- EDUCATION: IIIT Gwalior M.Tech Graduation -->
                 <div class="timeline-item edu">
@@ -256,7 +261,7 @@
                 <div class="timeline-item edu">
                     <h3>Sri Chaitanya Junior College</h3>
                     <p><em>Class XII — Science</em></p>
-                    <p>Completed higher secondary education.</p>
+                    <p>Completed higher secondary education (intermediate).</p>
                 </div>
 
                 <!-- YEAR HEADER: 2016 -->
@@ -313,6 +318,9 @@
     <!-- ========== SCRIPTS ========== -->
     <!-- Timeline filtering functionality -->
     <script src="timeline.js" defer></script>
+
+    <!-- Space background animation -->
+    <script src="space-bg.js" defer></script>
 
     <!-- Analytics: GoatCounter -->
     <script data-goatcounter="https://vgin.goatcounter.com/count" async src="//gc.zgo.at/count.js" defer>
